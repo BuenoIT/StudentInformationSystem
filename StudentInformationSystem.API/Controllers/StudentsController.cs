@@ -25,5 +25,21 @@ namespace StudentInformationSystem.API.Controllers
 
             return Ok(mapper.Map<List<Student>>(students));
         }
+
+        [HttpGet]
+        [Route("[controller]/{studentId:guid}")]
+        public async Task<IActionResult> GetStudentAsync([FromRoute] Guid studentId)
+        {
+            //Fetch single student detail
+            var student = await studentRepository.GetStudentAsync(studentId);
+
+            //Return student
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(mapper.Map<Student>(student));
+        }
     }
 }
