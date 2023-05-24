@@ -9,5 +9,6 @@ namespace StudentInformationSystem.API.Repositories
         Task<List<Gender>>GetGendersAsync();
         Task<bool> Exists(Guid studentId);
         Task<Student> UpdateStudent(Guid studentId, DataModels.Student request);
+        Task<Student> DeleteStudent(Guid studentId);
     }
 }
