@@ -43,7 +43,7 @@ namespace StudentInformationSystem.API.Controllers
         }
 
         [HttpPut]
-        [Route("[controller]{studentId:guid}")]
+        [Route("[controller]/{studentId:guid}")]
         public async Task<IActionResult> UpdateStudentAsync([FromRoute] Guid studentId, [FromBody] UpdateStudentRequest request)
         {
            if (await studentRepository.Exists(studentId))
