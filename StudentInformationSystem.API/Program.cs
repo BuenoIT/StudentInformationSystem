@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using StudentInformationSystem.API.DataModels;
@@ -9,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddControllers();
+
+builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 
 builder.Services.AddDbContext<StudentDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("StudentInformationSystemDb")));
 
